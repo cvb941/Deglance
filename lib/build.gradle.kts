@@ -2,7 +2,10 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.compose.compiler)
+    id("maven-publish")
 }
+
+group = "com.github.cvb941"
 
 android {
     namespace = "net.kusik.deglance"
@@ -39,8 +42,8 @@ dependencies {
     androidTestImplementation(composeBom)
 
     implementation(libs.androidx.appcompat)
-    implementation("androidx.compose.foundation:foundation")
-    implementation("androidx.glance:glance:1.1.0")
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.glance)
     implementation(libs.androidx.lifecycle.process)
 
     testImplementation(libs.junit)
