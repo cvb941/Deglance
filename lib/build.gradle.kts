@@ -34,6 +34,13 @@ android {
     buildFeatures {
         compose = true
     }
+
+    publishing {
+        multipleVariants {
+            allVariants()
+            withSourcesJar()
+        }
+    }
 }
 
 dependencies {
@@ -49,4 +56,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("release") {
+            afterEvaluate {
+                from(components["release"])
+            }
+        }
+    }
 }
